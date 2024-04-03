@@ -2,15 +2,15 @@ import json
 from datetime import datetime as dt
 import datetime
 
-def enterpretated_json():
+def enterpretated_json(file_path):
     '''
     Загружает данные из JSON файла.
     :return: Список словарей с данными операций
     '''
-    with open('operation.json') as f:
+    with open(file_path) as f:
         list_apres_json = json.load(f)
         return list_apres_json
-list_main = enterpretated_json()
+list_main = enterpretated_json("/home/alex/Skypro/work_course3")
 
 
 def operations_executed(list_1):
