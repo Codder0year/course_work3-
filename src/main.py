@@ -1,16 +1,19 @@
 import json
+import os
 from datetime import datetime as dt
-import datetime
-
-def enterpretated_json(file_path):
+from config import ROOT_DIR
+load_json = os.path.join(ROOT_DIR, "operation.json")
+def enterpretated_json(load_json):
     '''
     Загружает данные из JSON файла.
     :return: Список словарей с данными операций
     '''
-    with open(file_path) as f:
+    with open(load_json) as f:
         list_apres_json = json.load(f)
         return list_apres_json
-list_main = enterpretated_json("operation.json")
+
+
+list_main = enterpretated_json(load_json)
 
 
 def operations_executed(list_1):
@@ -52,7 +55,9 @@ def operations_from(list_3):
         if len(part_from) == 16:
             return f"{''.join(name_card)} {part_from[:4]} {part_from[4:6]} {'*' * 2} {'*' * 4} {part_from[-4:]}"
         else:
-            return f"{'*' * 2} {part_from[-4:]}"
+            return f" {'*' * 2} {part_from[-4:]}"
+    else:
+        return "Инкогнито"  # Возвращаем пустую строку, если отправитель не указан
 
 
 def operations_to(list_3):
@@ -69,7 +74,7 @@ def operations_to(list_3):
         if len(part_to) == 16:
             return f"{''.join(name_card)} {part_to[:4]} {part_to[4:6]} {'*' * 2} {'*' * 4} {part_to[-4:]}"
         else:
-            return f"{'*' * 2} {part_to[-4:]}"
+            return f"Счет: {'*' * 2} {part_to[-4:]}"
 
 
 def operation_data(list_3):
@@ -97,8 +102,8 @@ for i in list_final:
     data_stdout = operation_data(i)
     description_stdout = operation_description(i)
     print(f"{data_stdout} {description_stdout}")
-    print()
     variable_from = operations_from(i)
     variable_to = operations_to(i)
     print(f"{variable_from} -> {variable_to}")
     print(f"{i['operationAmount']['amount']} {i['operationAmount']['currency']['name']}")
+    print()
