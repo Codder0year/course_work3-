@@ -1,6 +1,8 @@
 
 # created by virtualenv automatically
-venv/
-bin
-lib
+.idea/
+.venv/
+.lib/
+.bin/
+.poetry.lock/
 
