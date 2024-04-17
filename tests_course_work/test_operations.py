@@ -86,8 +86,3 @@ def test_operations_to():
     }
     expected_result_with_sender = "Счет: ** 4188"
     assert operations_to(operation_with_sender) == expected_result_with_sender
-
-
-
-#Дальше не видел смысла пробивать остальные две на получение просто значения по ключу, нужно было без функций их делать вообще
-# но я 4 дня ковырялся вплотную курсовой, не хочу переделывать, простите люблю вас
